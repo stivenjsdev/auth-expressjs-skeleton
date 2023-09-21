@@ -7,8 +7,8 @@ import authRoutes from './routes/auth.routes.js';
 import profileRoutes from './routes/profile.routes.js';
 
 const server = express();
-const PORT = process.env.port;
-const URL = process.env.url;
+const PORT = process.env.PORT;
+const URL = process.env.URL;
 // console.log(process.env.port);
 
 // Middlewares
