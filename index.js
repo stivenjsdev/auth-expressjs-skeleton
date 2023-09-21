@@ -8,11 +8,15 @@ const PORT = process.env.port;
 const URL = process.env.url;
 // console.log(process.env.port);
 
+// Middlewares
 server.use(express.json());
 server.use(cors());
 
+// Routes
+
 const main = async () => {
   try {
+    // conectar a MongoDB
     await mongoose.connect(URL);
 
     server.listen(PORT, () => {
