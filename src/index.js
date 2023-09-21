@@ -17,7 +17,8 @@ server.use(cors());
 
 // Routes
 server.use('/api/auth', authRoutes);
-server.use('/api/profile', profileRoutes); 
+server.use('/api/profile', profileRoutes);
+server.use('/api/welcome', (req, res) => res.status(200).json({message: 'Welcome to the auth api'}))
 
 const main = async () => {
   try {
