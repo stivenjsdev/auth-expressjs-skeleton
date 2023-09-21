@@ -3,6 +3,9 @@ import 'dotenv/config';
 import express from 'express';
 import mongoose from 'mongoose';
 
+import authRoutes from './routes/auth.routes.js';
+import profileRoutes from './routes/profile.routes.js';
+
 const server = express();
 const PORT = process.env.port;
 const URL = process.env.url;
@@ -13,6 +16,8 @@ server.use(express.json());
 server.use(cors());
 
 // Routes
+server.use('/api/auth', authRoutes);
+server.use('/api/profile', profileRoutes); 
 
 const main = async () => {
   try {
