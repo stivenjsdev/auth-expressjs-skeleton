@@ -1,26 +1,26 @@
-import bcrypt from 'bcrypt';
-import { Schema, model } from 'mongoose';
+import bcrypt from "bcrypt";
+import { Schema, model } from "mongoose";
 
-const saltRounds = 10
+const saltRounds = 10;
 
 // USER SCHEMA
 const userSchema = new Schema({
   name: {
     type: String,
-    required: true
+    required: true,
   },
   email: {
     type: String,
     required: true,
-    unique: true
+    unique: true,
   },
   password: {
     type: String,
-    required: true
-  }
+    required: true,
+  },
 });
 
-userSchema.set('toJSON', {
+userSchema.set("toJSON", {
   transform: (document, returnedObject) => {
     returnedObject.id = returnedObject._id.toString();
     delete returnedObject._id;
@@ -36,9 +36,9 @@ userSchema.methods.encryptPassword = async (password) => {
   // return await bcrypt.hash(myPlaintextPassword, saltRounds);
 };
 
-userSchema.methods.validatePassword = function(password) {
+userSchema.methods.validatePassword = function (password) {
   return bcrypt.compare(password, this.password); // retorna true o false
-}
+};
 
 // USER MODEL
 export const User = model(

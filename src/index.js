@@ -1,10 +1,10 @@
-import cors from 'cors';
-import 'dotenv/config';
-import express from 'express';
-import mongoose from 'mongoose';
+import cors from "cors";
+import "dotenv/config";
+import express from "express";
+import mongoose from "mongoose";
 
-import authRoutes from './routes/auth.routes.js';
-import profileRoutes from './routes/profile.routes.js';
+import authRoutes from "./routes/auth.routes.js";
+import profileRoutes from "./routes/profile.routes.js";
 
 const server = express();
 const PORT = process.env.PORT;
@@ -16,9 +16,11 @@ server.use(express.json());
 server.use(cors());
 
 // Routes
-server.use('/api/auth', authRoutes);
-server.use('/api/profile', profileRoutes);
-server.use('/api/welcome', (req, res) => res.status(200).json({message: 'Welcome to the auth api'}))
+server.use("/api/auth", authRoutes);
+server.use("/api/profile", profileRoutes);
+server.use("/api/welcome", (req, res) =>
+  res.status(200).json({ message: "Welcome to the auth api" })
+);
 
 const main = async () => {
   try {
@@ -33,6 +35,6 @@ const main = async () => {
     console.log(error.message);
     // console.log(error.stack);
   }
-}
+};
 
 main();

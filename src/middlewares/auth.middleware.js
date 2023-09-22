@@ -1,16 +1,17 @@
-import jwt from 'jsonwebtoken';
+import jwt from "jsonwebtoken";
 
 const checkToken = (req, res, next) => {
-  let token = req.headers['x-access-token'] || req.headers['authorization'] || ''; 
+  let token =
+    req.headers["x-access-token"] || req.headers["authorization"] || "";
 
-  if (token.startsWith('Bearer ')) {
+  if (token.startsWith("Bearer ")) {
     token = token.slice(7, token.length);
   }
 
   if (!token) {
     return res.status(401).json({
       ok: false,
-      error: 'There is no token in the request'
+      error: "There is no token in the request",
     });
   }
 
@@ -20,14 +21,12 @@ const checkToken = (req, res, next) => {
   } catch (error) {
     return res.status(401).json({
       ok: false,
-      msg: 'Invalid token'
+      msg: "Invalid token",
     });
   }
 
   next();
-}
-
-export {
-  checkToken
 };
+
+export { checkToken };
 
